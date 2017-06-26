@@ -11,7 +11,7 @@ require_once 'dataLayer/City.php';
 
 
 echo 'test';
-$a = 1;
+$a = 666;
 
 $d = new City(2, 'a', 9);
 var_dump($d);
