@@ -63,6 +63,16 @@ class DbContext
     }
 
 
+    function executeRawSqlCommand($command)
+    {
+        $connection = $this->connect();
+        $result = mysqli_query($connection, $command);
+        mysqli_close($connection);
+        $connection = null;
+        return $result;
+    }
+
+
     /**
      * @param string $modelClass
      * @param string $condition
@@ -76,6 +86,13 @@ class DbContext
         $result = mysqli_query($connection, $command);
 
         $list = array();
+
+//        $fields = mysqli_fetch_fields($list);
+//        foreach ($fields as $field){
+//            var_dump($field->)
+//        }
+
+
         if ($result && mysqli_num_rows($result) > 0)
         {
             if ($modelClass == Administrator::class)
