@@ -74,17 +74,4 @@ class ParcelPost extends DbModel
         $this->Cost = $cost;
         $this->TimeLimit = $timeLimit;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new ParcelPost($row["Id"], $row["Title"], $row["TypeId"], $row["Weight"], $row["StatusCode"],
-                $row["StatusDescription"], $row["Description"], $row["Cost"], $row["TimeLimit"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }

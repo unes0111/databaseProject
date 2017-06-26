@@ -39,16 +39,4 @@ class Postman extends DbModel
         $this->FinishDate = $finishDate;
         $this->Email = $email;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new Postman($row["RealPersonId"], $row["StartDate"], $row["FinishDate"], $row["Email"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }

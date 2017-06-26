@@ -1,8 +1,7 @@
 <?php
 
 
-abstract class DbModel
+class DbModel
 {
 
-    abstract static function createFromDbResult($dbResult);
 }

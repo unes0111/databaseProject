@@ -40,16 +40,4 @@ class Employee extends DbModel
         $this->StatusCode = $statusCode;
         $this->Password = $password;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new Employee($row["RealPersonId"], $row["Email"], $row["StatusCode"], $row["Password"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }

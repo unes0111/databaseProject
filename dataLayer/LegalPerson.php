@@ -54,17 +54,4 @@ class LegalPerson extends DbModel
         $this->PhoneNumber = $phoneNumber;
         $this->Address = $address;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new LegalPerson($row["NationalId"], $row["PostCode"], $row["CompanyName"], $row["OrganizationTypeCode"],
-                $row["PhoneNumber"], $row["Address"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }

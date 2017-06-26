@@ -86,62 +86,20 @@ class DbContext
         $result = mysqli_query($connection, $command);
 
         $list = array();
-
-//        $fields = mysqli_fetch_fields($list);
-//        foreach ($fields as $field){
-//            var_dump($field->)
-//        }
-
+        $fields = mysqli_fetch_fields($result);
 
         if ($result && mysqli_num_rows($result) > 0)
         {
-            if ($modelClass == Administrator::class)
-                $list = Administrator::createFromDbResult($result);
-
-            else if ($modelClass == Ceo::class)
-                $list = Ceo::createFromDbResult($result);
-
-            else if ($modelClass == City::class)
-                $list = City::createFromDbResult($result);
-
-            else if ($modelClass == Customer::class)
-                $list = Customer::createFromDbResult($result);
-
-            else if ($modelClass == Employee::class)
-                $list = Employee::createFromDbResult($result);
-
-            else if ($modelClass == Form::class)
-                $list = Form::createFromDbResult($result);
-
-            else if ($modelClass == LegalPerson::class)
-                $list = LegalPerson::createFromDbResult($result);
-
-            else if ($modelClass == ParcelPost::class)
-                $list = ParcelPost::createFromDbResult($result);
-
-            else if ($modelClass == ParcelPostService::class)
-                $list = ParcelPostService::createFromDbResult($result);
-
-            else if ($modelClass == ParcelPostType::class)
-                $list = ParcelPostType::createFromDbResult($result);
-
-            else if ($modelClass == Postman::class)
-                $list = Postman::createFromDbResult($result);
-
-            else if ($modelClass == PostOffice::class)
-                $list = PostOffice::createFromDbResult($result);
-
-            else if ($modelClass == PostService::class)
-                $list = PostService::createFromDbResult($result);
-
-            else if ($modelClass == RealPerson::class)
-                $list = RealPerson::createFromDbResult($result);
-
-            else if ($modelClass == Recipient::class)
-                $list = Recipient::createFromDbResult($result);
-
-            else if ($modelClass == WorksFor::class)
-                $list = WorksFor::createFromDbResult($result);
+            while ($row = mysqli_fetch_assoc($result))
+            {
+                $item = new $modelClass();
+                foreach ($fields as $field)
+                {
+                    $fieldName = $field->name;
+                    $item->$fieldName = $row[$fieldName];
+                }
+                array_push($list, $item);
+            }
         }
 
         mysqli_close($connection);

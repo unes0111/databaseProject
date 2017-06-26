@@ -60,17 +60,4 @@ class RealPerson extends DbModel
         $this->PhoneNumber = $phoneNumber;
         $this->Address = $address;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new RealPerson($row["NationalId"], $row["FirstName"], $row["LastName"], $row["PostCode"],
-                $row["CellNumber"], $row["PhoneNumber"], $row["Address"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }

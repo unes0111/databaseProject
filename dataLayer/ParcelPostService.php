@@ -25,16 +25,4 @@ class ParcelPostService extends DbModel
         $this->ParcelPostId = $parcelPostId;
         $this->PostServiceId = $postServiceId;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new ParcelPostService($row["ParcelPostId"], $row["PostServiceId"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }

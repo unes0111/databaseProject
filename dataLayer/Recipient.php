@@ -32,16 +32,4 @@ class Recipient extends DbModel
         $this->RealPersonId = $realPersonId;
         $this->LegalPersonId = $legalPersonId;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new Recipient($row["Email"], $row["RealPersonId"], $row["LegalPersonId"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }

@@ -25,16 +25,4 @@ class ParcelPostType extends DbModel
         $this->Id = $id;
         $this->Title = $title;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new ParcelPostType($row["Id"], $row["Title"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }

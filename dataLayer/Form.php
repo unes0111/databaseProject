@@ -83,17 +83,4 @@ class Form extends DbModel
         $this->RegisterDate = $registerDate;
         $this->DeliveryDate = $deliveryDate;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new Form($row["TrackNumber"], $row["ParcelPostId"], $row["CustomerId"], $row["RecipientId"], $row["PostOfficeId"],
-                $row["EmployeeId"], $row["PostmanId"], $row["StatusCode"], $row["RegisterDate"], $row["DeliveryDate"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }

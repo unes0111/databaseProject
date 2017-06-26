@@ -33,16 +33,4 @@ class Administrator extends DbModel
         $this->Email = $email;
         $this->Password = $password;
     }
-
-
-    static function createFromDbResult($dbResult)
-    {
-        $list = array();
-        foreach ($dbResult as $row)
-        {
-            $item = new Administrator($row["RealPersonId"], $row["Email"], $row["Password"]);
-            array_push($list, $item);
-        }
-        return $list;
-    }
 }
