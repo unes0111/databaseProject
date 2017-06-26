@@ -1,12 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Shima
- * Date: 6/27/2017
- * Time: 5:31 AM
- */
-class Postservice extends DbModel
+
+class PostService extends DbModel
 {
     /**
      * @var int
@@ -24,7 +19,7 @@ class Postservice extends DbModel
     public $Cost;
 
     /**
-     * Postservice constructor.
+     * PostService constructor.
      * @param int $id
      * @param string $name
      * @param int $cost

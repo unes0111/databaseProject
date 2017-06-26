@@ -1,12 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Shima
- * Date: 6/27/2017
- * Time: 5:12 AM
- */
-class Worksfor extends DbModel
+
+class WorksFor extends DbModel
 {
     /**
      * @var int
@@ -35,14 +30,14 @@ class Worksfor extends DbModel
 
 
     /**
-     * Worksfor constructor.
-     * @param $employeeId
-     * @param $startDate
-     * @param $finishDate
-     * @param $isManager
-     * @param $postOfficeId
+     * WorksFor constructor.
+     * @param int $employeeId
+     * @param DateTime $startDate
+     * @param DateTime $finishDate
+     * @param bool $isManager
+     * @param int $postOfficeId
      */
-    function __construct($employeeId, $startDate, $finishDate, $isManager, $postOfficeId)
+    function __construct(int $employeeId, DateTime $startDate, DateTime $finishDate, boolean $isManager, int $postOfficeId)
     {
         $this->EmployeeId = $employeeId;
         $this->StartDate = $employeeId;

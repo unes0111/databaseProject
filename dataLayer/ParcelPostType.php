@@ -1,12 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Shima
- * Date: 6/27/2017
- * Time: 5:47 AM
- */
-class Parcelposttype extends DbModel
+
+class ParcelPostType extends DbModel
 {
     /**
      * @var int
@@ -19,7 +14,7 @@ class Parcelposttype extends DbModel
     public $Title;
 
     /**
-     * Parcelposttype constructor.
+     * ParcelPostType constructor.
      * @param int $id
      * @param string $title
      */

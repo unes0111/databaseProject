@@ -1,12 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Shima
- * Date: 6/27/2017
- * Time: 5:24 AM
- */
-class Realperson extends DbModel
+
+class RealPerson extends DbModel
 {
     /**
      * @var int
@@ -44,7 +39,7 @@ class Realperson extends DbModel
     public $Address;
 
     /**
-     * Realperson constructor.
+     * RealPerson constructor.
      * @param int $nationalId
      * @param string $firstName
      * @param string $lastName

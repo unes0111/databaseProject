@@ -1,12 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Shima
- * Date: 6/27/2017
- * Time: 5:34 AM
- */
-class Postoffice extends DbModel
+
+class PostOffice extends DbModel
 {
     /**
      * @var int
@@ -44,7 +39,7 @@ class Postoffice extends DbModel
     public $RuralId;
 
     /**
-     * Postoffice constructor.
+     * PostOffice constructor.
      * @param int $id
      * @param string $name
      * @param int $typeCode

@@ -1,7 +1,7 @@
 <?php
 
 
-class Legalperson extends DbModel
+class LegalPerson extends DbModel
 {
     /**
      * @var string
@@ -35,7 +35,7 @@ class Legalperson extends DbModel
 
 
     /**
-     * Legalperson constructor.
+     * LegalPerson constructor.
      * @param string $nationalId
      * @param int $postCode
      * @param string $companyName

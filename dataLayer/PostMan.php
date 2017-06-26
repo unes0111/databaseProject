@@ -1,12 +1,7 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Shima
- * Date: 6/27/2017
- * Time: 5:42 AM
- */
-class Postman extends DbModel
+
+class PostMan extends DbModel
 {
     /**
      * @var int
@@ -29,7 +24,7 @@ class Postman extends DbModel
     public $Email;
 
     /**
-     * Postman constructor.
+     * PostMan constructor.
      * @param int $realPersonId
      * @param DateTime $startDate
      * @param DateTime $finishDate
