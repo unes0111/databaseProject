@@ -3,7 +3,7 @@
 require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
 
 
-class PostMan extends DbModel
+class Postman extends DbModel
 {
     /**
      * @var int
@@ -26,7 +26,7 @@ class PostMan extends DbModel
     public $Email;
 
     /**
-     * PostMan constructor.
+     * Postman constructor.
      * @param int $realPersonId
      * @param DateTime $startDate
      * @param DateTime $finishDate
@@ -38,5 +38,17 @@ class PostMan extends DbModel
         $this->StartDate = $startDate;
         $this->FinishDate = $finishDate;
         $this->Email = $email;
+    }
+
+
+    static function createFromDbResult($dbResult)
+    {
+        $list = array();
+        foreach ($dbResult as $row)
+        {
+            $item = new Postman($row["RealPersonId"], $row["StartDate"], $row["FinishDate"], $row["Email"]);
+            array_push($list, $item);
+        }
+        return $list;
     }
 }

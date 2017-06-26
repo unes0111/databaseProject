@@ -47,4 +47,16 @@ class Customer extends DbModel
         $this->RealPersonId = $realPersonId;
         $this->LegalPersonId = $legalPersonId;
     }
+
+
+    static function createFromDbResult($dbResult)
+    {
+        $list = array();
+        foreach ($dbResult as $row)
+        {
+            $item = new Customer($row["Email"], $row["Password"], $row["LastDegreeCode"], $row["RealPersonId"], $row["LegalPersonId"]);
+            array_push($list, $item);
+        }
+        return $list;
+    }
 }

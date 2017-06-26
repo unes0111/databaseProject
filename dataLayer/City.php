@@ -29,8 +29,20 @@ class City extends DbModel
      */
     function __construct($id, $name, $parentId)
     {
-//        $this->Id = $id;
-//        $this->Name = $name;
-//        $this->ParentId = $parentId;
+        $this->Id = $id;
+        $this->Name = $name;
+        $this->ParentId = $parentId;
+    }
+
+
+    static function createFromDbResult($dbResult)
+    {
+        $list = array();
+        foreach ($dbResult as $row)
+        {
+            $item = new City($row["Id"], $row["Name"], $row["ParentId"]);
+            array_push($list, $item);
+        }
+        return $list;
     }
 }

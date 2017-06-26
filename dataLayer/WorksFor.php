@@ -47,4 +47,16 @@ class WorksFor extends DbModel
         $this->IsManager = $isManager;
         $this->PostOfficeId = $postOfficeId;
     }
+
+
+    static function createFromDbResult($dbResult)
+    {
+        $list = array();
+        foreach ($dbResult as $row)
+        {
+            $item = new WorksFor($row["EmployeeId"], $row["StartDate"], $row["FinishDate"], $row["IsManager"], $row["PostOfficeId"]);
+            array_push($list, $item);
+        }
+        return $list;
+    }
 }

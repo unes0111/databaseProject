@@ -10,7 +10,7 @@ require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/LegalPerson.php');
 require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/ParcelPost.php');
 require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/ParcelPostService.php');
 require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/ParcelPostType.php');
-require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/PostMan.php');
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/Postman.php');
 require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/PostOffice.php');
 require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/PostService.php');
 require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/RealPerson.php');
@@ -72,31 +72,60 @@ class DbContext
     {
         $_condition = (!isset($condition) || $condition == null) ? '' : trim($condition);
         $command = "SELECT * FROM " . strtolower($modelClass) . " WHERE " . ($_condition == '' ? '1=1' : $_condition) . ";";
-        var_dump($command);
         $connection = $this->connect();
         $result = mysqli_query($connection, $command);
 
         $list = array();
         if ($result && mysqli_num_rows($result) > 0)
-            while ($row = mysqli_fetch_assoc($result))
-            {
-                $item = null;
-                var_dump($row);
-//                if ($modelClass == Game::class)
-//                    $item = new Game($row["Id"], $row["Name"]);
-//
-//                else if ($modelClass == User::class)
-//                    $item = new User($row["Id"], $row["Nickname"], $row["IMEI"]);
-//
-//                else if ($modelClass == ScoreType::class)
-//                    $item = new ScoreType($row["Id"], $row["Title"]);
-//
-//                else if ($modelClass == Score::class)
-//                    $item = new Score($row["Id"], $row["ScoreType_Id"], $row["User_Id"], $row["Game_Id"], $row["Score"]);
-//
-//                if ($item != null)
-//                    array_push($list, $item);
-            }
+        {
+            if ($modelClass == Administrator::class)
+                $list = Administrator::createFromDbResult($result);
+
+            else if ($modelClass == Ceo::class)
+                $list = Ceo::createFromDbResult($result);
+
+            else if ($modelClass == City::class)
+                $list = City::createFromDbResult($result);
+
+            else if ($modelClass == Customer::class)
+                $list = Customer::createFromDbResult($result);
+
+            else if ($modelClass == Employee::class)
+                $list = Employee::createFromDbResult($result);
+
+            else if ($modelClass == Form::class)
+                $list = Form::createFromDbResult($result);
+
+            else if ($modelClass == LegalPerson::class)
+                $list = LegalPerson::createFromDbResult($result);
+
+            else if ($modelClass == ParcelPost::class)
+                $list = ParcelPost::createFromDbResult($result);
+
+            else if ($modelClass == ParcelPostService::class)
+                $list = ParcelPostService::createFromDbResult($result);
+
+            else if ($modelClass == ParcelPostType::class)
+                $list = ParcelPostType::createFromDbResult($result);
+
+            else if ($modelClass == Postman::class)
+                $list = Postman::createFromDbResult($result);
+
+            else if ($modelClass == PostOffice::class)
+                $list = PostOffice::createFromDbResult($result);
+
+            else if ($modelClass == PostService::class)
+                $list = PostService::createFromDbResult($result);
+
+            else if ($modelClass == RealPerson::class)
+                $list = RealPerson::createFromDbResult($result);
+
+            else if ($modelClass == Recipient::class)
+                $list = Recipient::createFromDbResult($result);
+
+            else if ($modelClass == WorksFor::class)
+                $list = WorksFor::createFromDbResult($result);
+        }
 
         mysqli_close($connection);
         $connection = null;

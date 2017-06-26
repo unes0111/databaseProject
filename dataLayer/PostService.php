@@ -32,4 +32,16 @@ class PostService extends DbModel
         $this->Name = $name;
         $this->Cost = $cost;
     }
+
+
+    static function createFromDbResult($dbResult)
+    {
+        $list = array();
+        foreach ($dbResult as $row)
+        {
+            $item = new PostService($row["Id"], $row["Name"], $row["Cost"]);
+            array_push($list, $item);
+        }
+        return $list;
+    }
 }

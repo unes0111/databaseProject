@@ -57,9 +57,19 @@ class PostOffice extends DbModel
         $this->TypeCode = $typeCode;
         $this->StateId = $stateId;
         $this->CityId = $cityId;
-        $this->StateId = $stateId;
-        $this->CityId = $cityId;
         $this->SectionId = $sectionId;
         $this->RuralId = $ruralId;
+    }
+
+
+    static function createFromDbResult($dbResult)
+    {
+        $list = array();
+        foreach ($dbResult as $row)
+        {
+            $item = new PostOffice($row["Id"], $row["Name"], $row["TypeCode"], $row["StateId"], $row["CityId"], $row["SectionId"], $row["RuralId"]);
+            array_push($list, $item);
+        }
+        return $list;
     }
 }
