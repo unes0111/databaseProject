@@ -13,8 +13,10 @@ require_once 'dataLayer/DbContext.php';
 
 $c = new DbContext();
 
-$list = $c->select(ParcelPostType::class);
-var_dump($list);
+$list = $c->select(City::class);
+$first = $c->firstOrDefault($list, ['Name' => 'تهران']);
+var_dump($first);
+//var_dump($list);
 
 ?>
 

@@ -57,12 +57,40 @@ class DbContext
     }
 
 
-    function delete($model): bool
+    function delete($modelClass, $condition): bool
     {
+        $_condition = (!isset($condition) || $condition == null) ? '' : trim($condition);
+        $command = "DELETE FROM " . strtolower($modelClass) . " WHERE " . ($_condition == '' ? '1=1' : $_condition) . ";";
+        $connection = $this->connect();
+        $result = mysqli_query($connection, $command);
 
+        $list = array();
+        $fields = mysqli_fetch_fields($result);
+
+        if ($result && mysqli_num_rows($result) > 0)
+        {
+            while ($row = mysqli_fetch_assoc($result))
+            {
+                $item = new $modelClass();
+                foreach ($fields as $field)
+                {
+                    $fieldName = $field->name;
+                    $item->$fieldName = $row[$fieldName];
+                }
+                array_push($list, $item);
+            }
+        }
+
+        mysqli_close($connection);
+        $connection = null;
+        return $list;
     }
 
 
+    /**
+     * @param $command
+     * @return bool|mysqli_result
+     */
     function executeRawSqlCommand($command)
     {
         $connection = $this->connect();
@@ -75,7 +103,7 @@ class DbContext
 
     /**
      * @param string $modelClass
-     * @param string $condition
+     * @param $condition
      * @return array
      */
     function select(string $modelClass, $condition): array
@@ -106,4 +134,43 @@ class DbContext
         $connection = null;
         return $list;
     }
+
+
+    /**
+     * @param array $list
+     * @param array|null $conditions
+     * @return the value of the first array element, or null if the array is empty.
+     */
+    static function firstOrDefault(array &$list, $conditions)
+    {
+        if ((!isset($conditions) || $conditions == null))
+        {
+            $first = reset($list);
+            return $first ? $first : null;
+        }
+
+        $first = null;
+        foreach ($list as $element)
+        {
+            $find = true;
+            while ($condition = current($conditions))
+            {
+                $key = key($conditions);
+                if ($element->$key != $condition)
+                {
+                    $find = false;
+                    break;
+                }
+                next($conditions);
+            }
+
+            if ($find)
+            {
+                $first = $element;
+                break;
+            }
+        }
+        return $first;
+    }
+
 }
