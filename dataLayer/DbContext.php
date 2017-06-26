@@ -57,33 +57,19 @@ class DbContext
     }
 
 
+    /**
+     * @param $modelClass
+     * @param $condition
+     * @return bool
+     */
     function delete($modelClass, $condition): bool
     {
-        $_condition = (!isset($condition) || $condition == null) ? '' : trim($condition);
-        $command = "DELETE FROM " . strtolower($modelClass) . " WHERE " . ($_condition == '' ? '1=1' : $_condition) . ";";
+        if (!isset($condition) || $condition == null || trim($condition) == '')
+            return false;
+
+        $command = "DELETE FROM " . strtolower($modelClass) . " WHERE " . trim($condition) . ";";
         $connection = $this->connect();
-        $result = mysqli_query($connection, $command);
-
-        $list = array();
-        $fields = mysqli_fetch_fields($result);
-
-        if ($result && mysqli_num_rows($result) > 0)
-        {
-            while ($row = mysqli_fetch_assoc($result))
-            {
-                $item = new $modelClass();
-                foreach ($fields as $field)
-                {
-                    $fieldName = $field->name;
-                    $item->$fieldName = $row[$fieldName];
-                }
-                array_push($list, $item);
-            }
-        }
-
-        mysqli_close($connection);
-        $connection = null;
-        return $list;
+        return mysqli_query($connection, $command);
     }
 
 

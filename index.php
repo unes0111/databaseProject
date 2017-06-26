@@ -12,10 +12,10 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_PARSE);
 require_once 'dataLayer/DbContext.php';
 
 $c = new DbContext();
-
 $list = $c->select(City::class);
 $first = $c->firstOrDefault($list, ['Name' => 'تهران']);
-var_dump($first);
+var_dump($c->delete(City::class, 'Id = ' . $first->Id))
+//var_dump($first);
 //var_dump($list);
 
 ?>
