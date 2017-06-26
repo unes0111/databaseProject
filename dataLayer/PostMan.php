@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class PostMan extends DbModel
 {
@@ -30,7 +32,7 @@ class PostMan extends DbModel
      * @param DateTime $finishDate
      * @param string $email
      */
-    function __construct(int $realPersonId, DateTime $startDate, DateTime $finishDate, string $email)
+    function __construct($realPersonId, $startDate, $finishDate, $email)
     {
         $this->RealPersonId = $realPersonId;
         $this->StartDate = $startDate;

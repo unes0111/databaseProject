@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class PostOffice extends DbModel
 {
@@ -48,7 +50,7 @@ class PostOffice extends DbModel
      * @param int $sectionId
      * @param int $ruralId
      */
-    function __construct(int $id, string $name, int $typeCode, int $stateId, int $cityId, int $sectionId, int $ruralId)
+    function __construct($id, $name, $typeCode, $stateId, $cityId, $sectionId, $ruralId)
     {
         $this->Id = $id;
         $this->Name = $name;

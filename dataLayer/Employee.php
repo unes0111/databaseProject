@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class Employee extends DbModel
 {
@@ -31,7 +33,7 @@ class Employee extends DbModel
      * @param int $statusCode
      * @param string $password
      */
-    function __construct(int $realPersonId, string $email, int $statusCode, string $password)
+    function __construct($realPersonId, $email, $statusCode, $password)
     {
         $this->RealPersonId = $realPersonId;
         $this->Email = $email;

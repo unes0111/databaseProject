@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class LegalPerson extends DbModel
 {
@@ -43,8 +45,7 @@ class LegalPerson extends DbModel
      * @param string $phoneNumber
      * @param string $address
      */
-    function __construct(string $nationalId, int $postCode, string $companyName, int $organizationTypeCode,
-                         string $phoneNumber, string $address)
+    function __construct($nationalId, $postCode, $companyName, $organizationTypeCode, $phoneNumber, $address)
     {
         $this->NationalId = $nationalId;
         $this->PostCode = $postCode;

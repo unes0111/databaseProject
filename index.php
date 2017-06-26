@@ -6,15 +6,15 @@
 </head>
 <body>
 <?php
-require_once 'dataLayer/DbModel.php';
-require_once 'dataLayer/City.php';
+require_once 'dataLayer/DbContext.php';
 
+$c = new DbContext();
 
-echo 'test';
-$a = 666;
+//$t = new City(null,'az',null);
+//var_dump($t);
 
-$d = new City(2, 'a', 9);
-var_dump($d);
+$c->select(City::class,'');
+
 ?>
 
 </body>

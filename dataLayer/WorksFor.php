@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class WorksFor extends DbModel
 {
@@ -37,7 +39,7 @@ class WorksFor extends DbModel
      * @param bool $isManager
      * @param int $postOfficeId
      */
-    function __construct(int $employeeId, DateTime $startDate, DateTime $finishDate, boolean $isManager, int $postOfficeId)
+    function __construct($employeeId, $startDate, $finishDate, $isManager, $postOfficeId)
     {
         $this->EmployeeId = $employeeId;
         $this->StartDate = $employeeId;

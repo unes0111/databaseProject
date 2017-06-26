@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class Form extends DbModel
 {
@@ -67,8 +69,7 @@ class Form extends DbModel
      * @param DateTime $registerDate
      * @param DateTime $deliveryDate
      */
-    function __construct(int $trackNumber, int $parcelPostId, string $customerId, string $recipientId, int $postOfficeId,
-                         int $employeeId, int $postmanId, int $statusCode, DateTime $registerDate, DateTime $deliveryDate)
+    function __construct($trackNumber, $parcelPostId, $customerId, $recipientId, $postOfficeId, $employeeId, $postmanId, $statusCode, $registerDate, $deliveryDate)
     {
         $this->TrackNumber = $trackNumber;
         $this->ParcelPostId = $parcelPostId;

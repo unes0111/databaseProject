@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class Administrator extends DbModel
 {
@@ -25,7 +27,7 @@ class Administrator extends DbModel
      * @param string $email
      * @param string $password
      */
-    function __construct(int $realPersonId, string $email, string $password)
+    function __construct($realPersonId, $email, $password)
     {
         $this->RealPersonId = $realPersonId;
         $this->Email = $email;

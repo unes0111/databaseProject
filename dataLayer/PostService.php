@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class PostService extends DbModel
 {
@@ -24,10 +26,10 @@ class PostService extends DbModel
      * @param string $name
      * @param int $cost
      */
-    function __construct(int $id, string $name, int $cost)
+    function __construct($id, $name, $cost)
     {
-        $this->Id=$id;
-        $this->Name=$name;
-        $this->Cost=$cost;
+        $this->Id = $id;
+        $this->Name = $name;
+        $this->Cost = $cost;
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class City extends DbModel
 {
@@ -25,10 +27,10 @@ class City extends DbModel
      * @param string $name
      * @param int $parentId
      */
-    function __construct(int $id, string $name, int $parentId)
+    function __construct($id, $name, $parentId)
     {
-        $this->Id = $id;
-        $this->Name = $name;
-        $this->ParentId = $parentId;
+//        $this->Id = $id;
+//        $this->Name = $name;
+//        $this->ParentId = $parentId;
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
+
 
 class ParcelPost extends DbModel
 {
@@ -60,7 +62,7 @@ class ParcelPost extends DbModel
      * @param int $cost
      * @param int $timeLimit
      */
-    function __construct(int $id, string $title, int $typeId, int $weight, string $statusCode, string $statusDescription, int $description, int $cost, int $timeLimit)
+    function __construct($id, $title, $typeId, $weight, $statusCode, $statusDescription, $description, $cost, $timeLimit)
     {
         $this->Id = $id;
         $this->Title = $title;
