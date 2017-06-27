@@ -56,9 +56,9 @@ class ParcelPost extends DbModel
      * @param string $title
      * @param int $typeId
      * @param int $weight
-     * @param string $statusCode
+     * @param int $statusCode
      * @param string $statusDescription
-     * @param int $description
+     * @param string $description
      * @param int $cost
      * @param int $timeLimit
      */

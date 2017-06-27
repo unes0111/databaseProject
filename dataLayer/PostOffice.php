@@ -21,21 +21,25 @@ class PostOffice extends DbModel
     public $TypeCode;
 
     /**
+     * کد استان
      * @var int
      */
     public $StateId;
 
     /**
+     * کد شهرستان
      * @var int
      */
     public $CityId;
 
     /**
+     * کد بخش
      * @var int
      */
     public $SectionId;
 
     /**
+     * کد دهستان
      * @var int
      */
     public $RuralId;
@@ -45,10 +49,10 @@ class PostOffice extends DbModel
      * @param int $id
      * @param string $name
      * @param int $typeCode
-     * @param int $stateId
-     * @param int $cityId
-     * @param int $sectionId
-     * @param int $ruralId
+     * @param int $stateId کد استان
+     * @param int $cityId کد شهرستان
+     * @param int $sectionId کد بخش
+     * @param int $ruralId کد دهستان
      */
     function __construct($id, $name, $typeCode, $stateId, $cityId, $sectionId, $ruralId)
     {
