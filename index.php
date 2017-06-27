@@ -7,9 +7,6 @@
 <body>
 <?php
 
-// TODO : بررسی مجدد مدل ها
-// TODO : تبدیل int ها به bigint
-
 
 error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_PARSE);
 
