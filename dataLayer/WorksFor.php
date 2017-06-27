@@ -42,7 +42,7 @@ class WorksFor extends DbModel
     function __construct($employeeId, $startDate, $finishDate, $isManager, $postOfficeId)
     {
         $this->EmployeeId = $employeeId;
-        $this->StartDate = $employeeId;
+        $this->StartDate = $startDate;
         $this->FinishDate = $finishDate;
         $this->IsManager = $isManager;
         $this->PostOfficeId = $postOfficeId;

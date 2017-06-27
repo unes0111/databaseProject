@@ -47,7 +47,7 @@ class RealPerson extends DbModel
      * @param string $lastName
      * @param int $postCode
      * @param string $cellNumber
-     * @param int $phoneNumber
+     * @param string $phoneNumber
      * @param string $address
      */
     function __construct($nationalId, $firstName, $lastName, $postCode, $cellNumber, $phoneNumber, $address)
