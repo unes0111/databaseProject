@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `administrator`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `administrator` (
-  `RealPersonId` int(10) unsigned NOT NULL,
+  `RealPersonId` bigint(20) unsigned NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Password` varchar(20) NOT NULL,
   PRIMARY KEY (`RealPersonId`),
@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `ceo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ceo` (
-  `RealPersonId` int(10) unsigned NOT NULL,
+  `RealPersonId` bigint(20) unsigned NOT NULL,
   `StartDate` date NOT NULL,
   `FinishDate` date DEFAULT NULL,
   `Email` varchar(50) NOT NULL,
@@ -77,9 +77,9 @@ DROP TABLE IF EXISTS `city`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `city` (
-  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
-  `ParentId` int(10) unsigned DEFAULT NULL,
+  `ParentId` bigint(20) unsigned DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `FK_City_City_idx` (`ParentId`),
   CONSTRAINT `FK_City_City` FOREIGN KEY (`ParentId`) REFERENCES `city` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -106,7 +106,7 @@ CREATE TABLE `customer` (
   `Email` varchar(50) NOT NULL,
   `Password` varchar(20) NOT NULL,
   `LastDegreeCode` int(11) NOT NULL,
-  `RealPersonId` int(10) unsigned DEFAULT NULL,
+  `RealPersonId` bigint(20) unsigned DEFAULT NULL,
   `LegalPersonId` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`Email`),
   KEY `FK_Customer_RealPerson_idx` (`RealPersonId`),
@@ -133,7 +133,7 @@ DROP TABLE IF EXISTS `employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `employee` (
-  `RealPersonId` int(10) unsigned NOT NULL,
+  `RealPersonId` bigint(20) unsigned NOT NULL,
   `Email` varchar(50) NOT NULL,
   `StatusCode` int(11) NOT NULL,
   `Password` varchar(20) NOT NULL,
@@ -159,13 +159,13 @@ DROP TABLE IF EXISTS `form`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `form` (
-  `TrackNumber` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ParcelPostId` int(10) unsigned NOT NULL,
+  `TrackNumber` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `ParcelPostId` bigint(20) unsigned NOT NULL,
   `CustomerId` varchar(50) NOT NULL,
   `RecipientId` varchar(50) NOT NULL,
-  `PostOfficeId` int(10) unsigned NOT NULL,
-  `EmployeeId` int(10) unsigned NOT NULL,
-  `PostmanId` int(10) unsigned NOT NULL,
+  `PostOfficeId` bigint(20) unsigned NOT NULL,
+  `EmployeeId` bigint(20) unsigned NOT NULL,
+  `PostmanId` bigint(20) unsigned NOT NULL,
   `StatusCode` int(11) NOT NULL,
   `RegisterDate` datetime NOT NULL,
   `DeliveryDate` datetime DEFAULT NULL,
@@ -203,7 +203,7 @@ DROP TABLE IF EXISTS `legalperson`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `legalperson` (
   `NationalId` varchar(20) NOT NULL,
-  `PostCode` int(10) unsigned NOT NULL,
+  `PostCode` bigint(20) unsigned NOT NULL,
   `CompanyName` varchar(50) NOT NULL,
   `OrganizationTypeCode` int(11) NOT NULL,
   `PhoneNumber` varchar(11) NOT NULL,
@@ -229,9 +229,9 @@ DROP TABLE IF EXISTS `parcelpost`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `parcelpost` (
-  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `Title` varchar(50) NOT NULL,
-  `TypeId` int(10) unsigned NOT NULL,
+  `TypeId` bigint(20) unsigned NOT NULL,
   `Weight` int(11) NOT NULL,
   `StatusCode` int(11) NOT NULL,
   `StatusDescription` text,
@@ -261,8 +261,8 @@ DROP TABLE IF EXISTS `parcelpostservice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `parcelpostservice` (
-  `ParcelPostId` int(10) unsigned NOT NULL,
-  `PostServiceId` int(10) unsigned NOT NULL,
+  `ParcelPostId` bigint(20) unsigned NOT NULL,
+  `PostServiceId` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`ParcelPostId`,`PostServiceId`),
   KEY `FK_ParcelPostService_PostService_idx` (`PostServiceId`),
   CONSTRAINT `FK_ParcelPostService_ParcelPost` FOREIGN KEY (`ParcelPostId`) REFERENCES `parcelpost` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -287,7 +287,7 @@ DROP TABLE IF EXISTS `parcelposttype`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `parcelposttype` (
-  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `Title` varchar(50) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -310,7 +310,7 @@ DROP TABLE IF EXISTS `postman`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `postman` (
-  `RealPersonId` int(10) unsigned NOT NULL,
+  `RealPersonId` bigint(20) unsigned NOT NULL,
   `StartDate` date NOT NULL,
   `FinishDate` date DEFAULT NULL,
   `Email` varchar(50) NOT NULL,
@@ -336,13 +336,13 @@ DROP TABLE IF EXISTS `postoffice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `postoffice` (
-  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
   `TypeCode` int(11) NOT NULL,
-  `StateId` int(10) unsigned NOT NULL,
-  `CityId` int(10) unsigned NOT NULL,
-  `SectionId` int(10) unsigned NOT NULL,
-  `RuralId` int(10) unsigned NOT NULL,
+  `StateId` bigint(20) unsigned NOT NULL,
+  `CityId` bigint(20) unsigned NOT NULL,
+  `SectionId` bigint(20) unsigned NOT NULL,
+  `RuralId` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `FK_PostOfficeState_City_idx` (`StateId`),
   KEY `FK_PostOfficeCity_City_idx` (`CityId`),
@@ -372,7 +372,7 @@ DROP TABLE IF EXISTS `postservice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `postservice` (
-  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
   `Cost` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
@@ -396,10 +396,10 @@ DROP TABLE IF EXISTS `realperson`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `realperson` (
-  `NationalId` int(10) unsigned NOT NULL,
+  `NationalId` bigint(20) unsigned NOT NULL,
   `FirstName` varchar(50) NOT NULL,
   `LastName` varchar(50) NOT NULL,
-  `PostCode` int(10) unsigned NOT NULL,
+  `PostCode` bigint(20) unsigned NOT NULL,
   `CellNumber` varchar(11) NOT NULL,
   `PhoneNumber` varchar(11) DEFAULT NULL,
   `Address` text NOT NULL,
@@ -425,7 +425,7 @@ DROP TABLE IF EXISTS `recipient`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `recipient` (
   `Email` varchar(50) NOT NULL,
-  `RealPersonId` int(10) unsigned DEFAULT NULL,
+  `RealPersonId` bigint(20) unsigned DEFAULT NULL,
   `LegalPersonId` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`Email`),
   KEY `FK_Recipient_RealPerson_idx` (`RealPersonId`),
@@ -452,11 +452,11 @@ DROP TABLE IF EXISTS `worksfor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `worksfor` (
-  `EmployeeId` int(10) unsigned NOT NULL,
+  `EmployeeId` bigint(20) unsigned NOT NULL,
   `StartDate` date NOT NULL,
   `FinishDate` date DEFAULT NULL,
   `IsManager` bit(1) NOT NULL,
-  `PostOfficeId` int(10) unsigned NOT NULL,
+  `PostOfficeId` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`EmployeeId`,`StartDate`),
   KEY `FK_WorksFor_PostOffice_idx` (`PostOfficeId`),
   CONSTRAINT `FK_WorksFor_Employee` FOREIGN KEY (`EmployeeId`) REFERENCES `employee` (`RealPersonId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
