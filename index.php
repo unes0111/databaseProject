@@ -16,7 +16,7 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_PARSE);
 echo "HI";
 echo 'push 2';
 
-
+echo'c';
 
 require_once 'dataLayer/DbContext.php';
 
