@@ -10,8 +10,7 @@
 
 error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_PARSE);
 
-echo "HI";
-echo 'shima';
+// TODO : اینم ها رو درست کنم.. شاید تو دیتابیس هم بشه درستش کرد
 
 require_once 'dataLayer/DbContext.php';
 
