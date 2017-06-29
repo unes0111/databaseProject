@@ -6,7 +6,7 @@ require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
 class LegalPerson extends DbModel
 {
     /**
-     * @var string
+     * @var string شناسه ملی شرکت
      */
     public $NationalId;
 

@@ -163,19 +163,22 @@ class DbContext
         $result = mysqli_query($connection, $command);
 
         $list = array();
-        $fields = mysqli_fetch_fields($result);
-
-        if ($result && mysqli_num_rows($result) > 0)
+        if ($result)
         {
-            while ($row = mysqli_fetch_assoc($result))
+            $fields = mysqli_fetch_fields($result);
+
+            if ($result && mysqli_num_rows($result) > 0)
             {
-                $item = new $modelClass();
-                foreach ($fields as $field)
+                while ($row = mysqli_fetch_assoc($result))
                 {
-                    $fieldName = $field->name;
-                    $item->$fieldName = $row[$fieldName];
+                    $item = new $modelClass();
+                    foreach ($fields as $field)
+                    {
+                        $fieldName = $field->name;
+                        $item->$fieldName = $row[$fieldName];
+                    }
+                    array_push($list, $item);
                 }
-                array_push($list, $item);
             }
         }
 

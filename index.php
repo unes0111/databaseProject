@@ -5,16 +5,21 @@
     <title>Title2</title>
 </head>
 <body>
+
+
+<a href="/templates/customer/login/login.php">customer login page</a>
+
+
 <?php
 
 
-error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_PARSE);
+//error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_PARSE);
 
 // TODO : اینم ها رو درست کنم.. شاید تو دیتابیس هم بشه درستش کرد
 
-require_once 'dataLayer/DbContext.php';
+//require_once 'dataLayer/DbContext.php';
 
-$db = new DbContext();
+// $db = new DbContext();
 //$list = $db->select(City::class);
 //$person = new RealPerson(1234567890, 'علی', 'راهبر', 4715263848, '09114251425', '05132461874', 'مشهد بین طالقانی 8 پلاک 9');
 //$employee = new Employee(1234567890, 'email@mail.com', 2, 'alipass123');

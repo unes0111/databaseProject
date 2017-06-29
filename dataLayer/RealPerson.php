@@ -6,7 +6,7 @@ require_once($_SERVER ['DOCUMENT_ROOT'] . '/dataLayer/DbModel.php');
 class RealPerson extends DbModel
 {
     /**
-     * @var int
+     * @var int شماره ملی
      */
     public $NationalId;
 
