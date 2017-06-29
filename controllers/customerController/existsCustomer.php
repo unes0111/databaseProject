@@ -3,7 +3,7 @@
 require_once($_SERVER ['DOCUMENT_ROOT'] . '/controllers/shared/Utils.php');
 require_once($_SERVER ['DOCUMENT_ROOT'] . '/serviceLayer/CustomerService.php');
 
-$data = Utils::getPostRequestJsonData();
+$data = shared::getPostRequestJsonData();
 $exists = CustomerService::existsCustomer(trim($data->Email), trim($data->Password));
 
 if ($exists)

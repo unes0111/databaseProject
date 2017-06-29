@@ -1,10 +1,13 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/templates/shared.php');
 
-if (isset($_SESSION) && isset($_SESSION["Customer_Email"]) && $_SESSION["Customer_Email"] != null &&
-    isset($_SESSION["Customer_Password"]) && $_SESSION["Customer_Password"] != null
-)
+// set session
+// shared::setSession(["Customer_Email" => 3, "Customer_Password" => 'x']);
+
+// check session
+if (shared::hasSession(["Customer_Email", "Customer_Password"]))
 {
-    echo '<script>window.location.href = "/index.php" </script>';
+    shared::redirect("/index.php");
 }
 ?>
 
