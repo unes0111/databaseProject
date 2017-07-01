@@ -13,7 +13,7 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_PARSE);
 // TODO : اینم ها رو درست کنم.. شاید تو دیتابیس هم بشه درستش کرد
 
 require_once 'dataLayer/DbContext.php';
-s
+
 $db = new DbContext();
 //$list = $db->select(City::class);
 //$person = new RealPerson(1234567890, 'علی', 'راهبر', 4715263848, '09114251425', '05132461874', 'مشهد بین طالقانی 8 پلاک 9');
