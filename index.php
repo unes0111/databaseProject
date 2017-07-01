@@ -8,6 +8,8 @@
 
 
 <a href="/templates/customer/login/login.php">customer login page</a>
+<br/>
+<a href="/templates/customer/signUp.php">customer sign up page</a>
 
 
 <?php
