@@ -5,26 +5,20 @@ function loginCustomer() {
     let password = $('#password').val();
 
     if (email && email.trim() != '' && password && password.trim() != '') {
-        $.ajax({
-            url: "/controllers/customerController/existsCustomer.php",
-            type: "POST",
-            data: JSON.stringify(
-                {
-                    Email: email,
-                    Password: password
-                }
-            ),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                console.log(data.IsSuccess);
+        ajax_POST("/controllers/customerController/existsCustomer.php",
+            {Email: email, Password: password},
+            function (data) {
+                console.log(data);
+                redirect('profile.php');
             },
-            error: function (errorData) {
-                console.log(errorData);
-            }
-        });
+            function (error1, error2, error3) {
+                console.log(error1);
+                console.log(error2);
+                console.log(error3);
+            });
     }
     else {
+        alert('Fill in the fields.');
         $('#email').focus();
     }
 }

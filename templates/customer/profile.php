@@ -1,10 +1,19 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/controllers/shared/Utils.php');
 
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/dataLayer/DbContext.php');
+Utils::setSession(
+    ["Customer" => new Customer("uens@mail.com", 'pass', 9, 2051125024, null),
+        "Customer_Person" => new LegalPerson('346A21', 4126481362, 'همتا رایانه',
+            4, '05132463515', 'مشهد بلوار ملک آباد')]);
+
+// "Customer_Person" => new RealPerson(2051125024, 'یونس', 'حق جو', 4736154826, '09901067055', null, 'بابل بندپی شرقی')
+
 // check session
-if (Utils::hasSession(["Customer"]))
+if (!Utils::hasSession(["Customer"]))
 {
-    Utils::redirect("profile.php");
+    Utils::redirect("login.php");
 }
 ?>
 
@@ -18,7 +27,7 @@ if (Utils::hasSession(["Customer"]))
     <script src="/static/scripts/bootstrap/bootstrap.3.3.7.min.js"></script>
     <script src="/static/scripts/js/utils.js"></script>
 
-    <script src="/static/scripts/js/customer/login.js"></script>
+    <script src="/static/scripts/js/customer/profile.js"></script>
 </head>
 <body>
 
@@ -40,8 +49,18 @@ if (Utils::hasSession(["Customer"]))
             <li><a href="#">Page 2</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>
+                    <?php
+                    $person = Utils::getFromSession("Customer_Person");
+                    if ($person != null && isset($person->FirstName))
+                        echo $person->FirstName . ' ' . $person->LastName;
+                    else if ($person != null && isset($person->CompanyName))
+                        echo $person->CompanyName;
+                    else
+                        echo 'User';
+                    ?>
+                </a></li>
+            <li><a href="#" onclick="logoutCustomer()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
 </nav>

@@ -7,10 +7,11 @@
 <body>
 
 
-<a href="/templates/customer/login/login.php">customer login page</a>
+<a href="/templates/customer/login.php">customer login page</a>
 <br/>
 <a href="/templates/customer/signUp.php">customer sign up page</a>
-
+<br>
+<a href="/templates/customer/services.php">services</a>
 
 <?php
 
